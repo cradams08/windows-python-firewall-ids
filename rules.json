@@ -1,0 +1,37 @@
+{
+  "firewall_rules": [
+    {
+      "name": "Block outbound HTTP",
+      "direction": "outbound",
+      "protocol": "tcp",
+      "dst_port": 80,
+      "action": "block"
+    },
+    {
+      "name": "Allow DNS",
+      "direction": "outbound",
+      "protocol": "udp",
+      "dst_port": 53,
+      "action": "allow"
+    },
+    {
+      "name": "Block specific IP",
+      "direction": "inbound",
+      "ip": "192.168.1.100",
+      "action": "block"
+    }
+  ],
+  "ids_rules": [
+    {
+      "name": "Detect Telnet Access",
+      "protocol": "tcp",
+      "dst_port": 23,
+      "alert": "Telnet access attempt detected"
+    },
+    {
+      "name": "Detect Suspicious Payload",
+      "payload_pattern": "malicious_content",
+      "alert": "Suspicious payload found"
+    }
+  ]
+}
